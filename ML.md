@@ -3,9 +3,11 @@
 - [ML Basics（一份漫游指南 & 一份缩略图）](#ml-basics)
 - [Linear Models](#linear-models)
 - [Kernel Methods & SVM](#kernel-methods-svm)
-- [Bayesian Classification & Probabilistic Graphical Models](#bayesian-classification & probabilistic-graphical-models)
+- [Bayesian Classification & Probabilistic Graphical Models](#bayesian-classification-&-probabilistic-graphical-models)
 
 ## Intro.（一些琐碎的东西） {#intro}
+
+***
 
 ## ML Basics（一份漫游指南 & 一份缩略图） {#ml-basics}
 
@@ -14,6 +16,8 @@
 我被告知，这些思想并非凭空产生，亦非前辈们“一拍脑门”想出的，更不是带有强烈主观色彩的人为规定。因此，这带给我们一个好消息：要真正领会这些思想，并知晓它们从何而来，我们还得从它们的数学根基入手（这是一个相当简明的抓手）。
 
 这是因为，数学给予我们形式化定义一门语言的能力，而机器学习正是这样一门语言，它充当着沟通数据科学与人工智能“两岸”的桥梁。
+
+***
 
 ### 前置知识 & Toolbox
 
@@ -46,7 +50,7 @@
 
 
 
-
+***
 
 
 
@@ -90,6 +94,7 @@ ps. 平方和误差函数的构造的一致性
 1. Perceptron Algorithm
 
 #### 概率模型 的 引入
+> 概率模型按照x与y的分布划分为：判别式模型（给定x条件下y的概率）和生成式模型（估计x和y的联合分布）
 ### 逻辑回归模型
 1. 解析法
 > 最大似然估计法
@@ -99,13 +104,13 @@ ps. 平方和误差函数的构造的一致性
 > Iterative Reweighted least Squares算法（牛顿-拉夫森迭代）
 #### 拓展：多类回归
 
-#### 生成问题 的 引入
-（没有很搞懂）
+#### 生成模型 的 引入
 
 
 
 
 
+***
 
 ## Kernel Methods & SVM {#kernel-methods-svm}
 #### 决策边界的进一步优化：最大间隔分类器
@@ -134,9 +139,83 @@ ps. 平方和误差函数的构造的一致性
 
 #### 核方法的推广
 
+***
+
+## Bayesian Classification & Probabilistic Graphical Models {#bayesian-classification-&-probabilistic-graphical-models}
+[关于贝叶斯分类器的前置知识](#概率与信息)
+
+### 分类器的两种实现
+1. 朴素实现——朴素贝叶斯分类器
+1. 高级实现——概率图模型
 
 
-## Bayesian Classification & Probabilistic Graphical Models {#bayesian-classification & probabilistic-graphical-models}
-- [关于贝叶斯分类器的前置知识](#概率与信息)
+关于图论的前置知识：
+- 有向图(a.k.a. *贝叶斯网络*)
+- 无向图 (a.k.a. *马尔可夫随机场*)
+- 团
+- 最大团
+- 势函数
+- 条件独立性
 
+#### 重点考察方法：D分离 & 条件移除
 
+#### 马尔可夫随机场
+关于随机场的前置知识：
+- 位点空间
+- 相空间
+- 随机场
+- 邻域系统
+
+> 吉布斯分布
+> - 能量函数
+> - 配分函数
+>
+>
+
+#### 引入状态空间——走向隐马尔可夫模型
+```mermaid
+graph LR
+    %% States
+    pi[("πi = P(S1 = i) 初始概率分布")]
+    s1[(S1)]
+    s2[(S2)]
+    sn1[(Sn-1)]
+    sn[(Sn)]
+
+    %% Observations
+    y1{{Y1}}
+    y2{{Y2}}
+    yn1{{Yn-1}}
+    yn{{Yn}}
+
+    %% Transitions
+    pi --> s1
+    s1 --> s2
+    s2 -.-> sn1
+    sn1 --> sn
+
+    %% Observations
+    s1 --> y1
+    s2 --> y2
+    sn1 --> yn1
+    sn --> yn
+
+    %% Labels
+    linkStyle 0 stroke:#ff3,stroke-width:2px;
+    linkStyle 1 stroke:#ff3,stroke-width:2px;
+    linkStyle 2 stroke:#ff3,stroke-width:2px;
+    linkStyle 3 stroke:#ff3,stroke-width:2px;
+
+```
+
+##### 解决三个基本问题
+1. 
+- 前向算法
+1. 
+- 维特比算法
+1. 
+- EM算法
+
+#### Everything in a Nutshell
+**视频中人的注意力推理**
+**——事件和物体联合识别的4D时空交互**
