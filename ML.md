@@ -3,8 +3,7 @@
 - [ML Basics（一份漫游指南 & 一份缩略图）](#ml-basics)
 - [Linear Models](#linear-models)
 - [Kernel Methods & SVM](#kernel-methods-svm)
-- [Bayesian Classification](#bayesian-classification)
-- [Probabilistic Graphical Models](#probabilistic-graphical-models)
+- [Bayesian Classification & Probabilistic Graphical Models](#bayesian-classification & probabilistic-graphical-models)
 
 ## Intro.（一些琐碎的东西） {#intro}
 
@@ -26,7 +25,7 @@
 ##### 优化方法
 *主要是梯度下降方法*
 
-#### 概率与信息
+#### 概率与信息 {#概率与信息}
 
 ##### 我们为什么需要引入概率
 ##### 概率论，你熟练掌握了吗？（基于概率模型的一点补充）
@@ -55,10 +54,53 @@
 
 
 ## Linear Models {#linear-models}
+> **参数**的存在形式为线性的模型
+> 允许引入**非线性基函数**对输入***x***进行变换
+
+> 区分线性模型与线性函数这组概念
+
+#### 基函数的作用
+- 提高模型的表征能力
+- 对原始数据进行某种特征提取 / 特征变换
+(insert)
+
+### 线性模型用于回归问题
+- 模型的求解
+1. 解析法
+> 利用矩阵进行最大似然估计
+
+ps. 平方和误差函数的构造的一致性
+
+1. 迭代法
+> 随机梯度下降法（SGD法）
+
+递推公式
+#### 拓展：多输出
+两种思路：
+- 不同基函数进行独立单输出回归
+- 联合回归模型 + 多维高斯模型
+> 如果输出之间相对独立，或者每个输出的数据特性差异较大，第一种方法可能更合适。而如果输出之间存在较强的相关性，或者希望模型具有较高的计算效率，第二种方法则可能更优。
+
+### 线性模型用于分类问题
+> 不同之处在于引入**判别函数**进行后处理
+#### 判别函数的作用：划定决策边界
+### 判别函数（学习）方法（K类判别式法）
+1. 最小平方和误差
+1. Fisher线性判别式
+1. Perceptron Algorithm
+
+#### 概率模型 的 引入
+### 逻辑回归模型
+1. 解析法
+> 最大似然估计法
 
 
+1. 迭代法
+> Iterative Reweighted least Squares算法（牛顿-拉夫森迭代）
+#### 拓展：多类回归
 
-
+#### 生成问题 的 引入
+（没有很搞懂）
 
 
 
@@ -66,8 +108,35 @@
 
 
 ## Kernel Methods & SVM {#kernel-methods-svm}
+#### 决策边界的进一步优化：最大间隔分类器
+基本定义：
+> 1. 间隔：决策边界和任意样本点之间的最小距离
+> 1. 支撑向量：确定间隔位置的*关键*样本点
 
-## Bayesian Classification {#bayesian-classification}
+### 最大间隔优化
+- 二分类器的求解（拉格朗日方程法）
+    1. 优化函数：最大化间隔
+    1. 约束条件：确保全部分类正确
 
-## Probabilistic Graphical Models {#probabilistic-graphical-models}
-## 
+#### 实际情况：样本交错的处理
+两种思路：
+- 软间隔：松弛变量 + 惩罚因子（penalty）
+- 核函数 + 非线性变换（*详见后文*）
+
+#### 拓展：多分类SVM
+
+#### 拓展：SVM用于回归
+
+#### 核方法 的 引入
+> 从原始空间到特征空间的升维映射
+(insert)
+- 构造一个核函数
+
+#### 核方法的推广
+
+
+
+## Bayesian Classification & Probabilistic Graphical Models {#bayesian-classification & probabilistic-graphical-models}
+- [关于贝叶斯分类器的前置知识](#概率与信息)
+
+
