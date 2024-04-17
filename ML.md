@@ -66,7 +66,13 @@
 #### 基函数的作用
 - 提高模型的表征能力
 - 对原始数据进行某种特征提取 / 特征变换
-(insert)
+
+| 基函数    | 形式 |
+| ----------- | ----------- |
+| 恒等基函数   | $\phi(x) = x$      |
+| 幂基函数  | $\phi_j(x) = x^j$     |
+| 高斯基函数 |   $\phi_j(x) = exp\{-\frac{(x-\mu_j)^2}{2s^2}\}$        |
+| 反曲基函数 | $\phi_j(x) = \frac{1}{1 + exp(-\frac{x - \mu}{s})}$          |
 
 ### 线性模型用于回归问题
 - 模型的求解
@@ -134,7 +140,14 @@ ps. 平方和误差函数的构造的一致性
 
 #### 核方法 的 引入
 > 从原始空间到特征空间的升维映射
-(insert)
+
+
+| Kernel   | 形式 |
+| ----------- | ----------- |
+| 多项式核   | $k(\mathbf{x},\mathbf{y}) = (\mathbf{x}^T\mathbf{y} + c)^M $    |
+| 高斯核  | $k(\mathbf{x},\mathbf{y}) = exp[-\frac{\Vert x-y\Vert^2}{2\sigma^2}]$     |
+| 拉普拉斯核 |  $k(\mathbf{x},\mathbf{y}) = exp[-\frac{\Vert x-y\Vert}{\sigma}]$      |
+| 反曲核 | $k(\mathbf{x},\mathbf{y}) = tanh(a\textbf{x}^T\textbf{y} + b) $    |
 - 构造一个核函数
 
 #### 核方法的推广
@@ -219,3 +232,31 @@ graph LR
 #### Everything in a Nutshell
 **视频中人的注意力推理**
 **——事件和物体联合识别的4D时空交互**
+
+
+## Ensemble Learning
+Classification：
+- 同质：基学习器
+- 异质：组件学习器
+
+集群与性能的关系：
+
+### Boosting
+> 依赖 / 串行
+#### 机制
+特点：
+#### 典型算法
+注意：
+#### 应用
+
+### Bagging or Random Forest
+> 不依赖 / 并行
+#### 机制
+特点：
+#### 典型算法：Decision Tree
+
+##### 构建分类树
+
+#### Random Forest
+
+#### 应用
