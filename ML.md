@@ -5,8 +5,12 @@
 - [Linear Models](#linear-models)
 - [Kernel Methods &amp; SVM](#kernel-methods-svm)
 - [Bayesian Classification &amp; Probabilistic Graphical Models](#bayesian-classification-&-probabilistic-graphical-models)
-
+- [Ensemble Learning](#ensemble-learning)
+- [前馈神经网络](#前馈神经网络)
+- [卷积神经网络](#卷积神经网络)
+- [循环神经网络](#循环神经网络)
 - [无监督学习与聚类](#无监督学习与聚类)
+- [采样方法](#采样方法)
 
 ## Intro.（一些琐碎的东西）
 
@@ -373,6 +377,7 @@ Classification：
 > 在机器学习中，可能会遇到样本量过大或模型结构复杂导致的求解难度大、没有显示解析解等问题，这种情况下，可以利用采样方法进行模拟，从而对这些复杂模型进行近似求解或推理。一般会转化为**某些函数在特定分布下的积分或期望**，或者是求某些随机变量或参数**在给定数据下的后验分布**。
 
 ### 蒙特卡罗方法
+
 ### 常见的采样方法
 #### 均匀分布采样
 #### 逆变换采样
