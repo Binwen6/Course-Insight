@@ -240,7 +240,11 @@ ps. 平方和误差函数的构造的一致性
 
 1. 迭代法
 
+**最难算法：IRLS**
 > Iterative Reweighted least Squares算法（牛顿-拉夫森迭代）
+
+补充知识：海森矩阵$$\mathbf{H} = \frac{\partial^2E(\mathbf{w})}{\partial \mathbf{w}}$$
+
 
 #### 拓展：多类回归
 
