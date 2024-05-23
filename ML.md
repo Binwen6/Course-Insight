@@ -605,8 +605,16 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 ### LSTM
 
 #### 遗忘门
+$$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
 
-#### 输入们
+#### 输入门
+$$i_t=\sigma(W_i\cdot[h_{t-1},x_t]+b_i$$
+$$\tilde{C_t}=tanh(W_c\cdot[h_{t-1},x_t]+b_c)$$
+$$C_t=f_t\cdot C_{t-1}+i_t\cdot \tilde{C_t}$$
+
+#### 输出门
+$$O_t=\sigma(W_o\cdot[h_{t-1},x_t]+b_o$$
+$$h_t=O_t\cdot tanh(C_t)$$
 
 #### 状态更新
 
