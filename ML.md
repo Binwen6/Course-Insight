@@ -749,41 +749,7 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 ### 结构
 
 ### LSTM
-
-```mermaid
-graph TD
-    subgraph 遗忘门
-        A[h_t-1] -->|h_{t-1}| F1[W_f]
-        X[x_t] -->|x_t| F1
-        F1 -->|W_f \cdot [h_{t-1}, x_t] + b_f| F2[\sigma]
-        F2 -->|f_t| C1
-    end
-
-    subgraph 输入门
-        A -->|h_{t-1}| I1[W_i]
-        X -->|x_t| I1
-        I1 -->|W_i \cdot [h_{t-1}, x_t] + b_i| I2[\sigma]
-        A -->|h_{t-1}| IC1[W_c]
-        X -->|x_t| IC1
-        IC1 -->|W_c \cdot [h_{t-1}, x_t] + b_c| IC2[\tanh]
-        I2 -->|i_t| C1
-        IC2 -->|\tilde{C_t}| C1
-        subgraph 记忆单元更新
-            C0[C_{t-1}] -->|f_t \cdot C_{t-1}| C1
-            C1 -->|C_t| C2
-            I2 -->|i_t \cdot \tilde{C_t}| C1
-        end
-    end
-
-    subgraph 输出门
-        A -->|h_{t-1}| O1[W_o]
-        X -->|x_t| O1
-        O1 -->|W_o \cdot [h_{t-1}, x_t] + b_o| O2[\sigma]
-        C2 -->|\tanh(C_t)| O3[\tanh]
-        O2 -->|O_t| O4
-        O4 -->|O_t \cdot \tanh(C_t)| H[h_t]
-    end
-```
+![lstm](/Course-Insight/src/lstm.jpg)
 
 #### 遗忘门
 $$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
