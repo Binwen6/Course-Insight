@@ -200,8 +200,10 @@ R is for Recall（查全率）：所有对的样本，你找出来了多少
 
 P & R：反相关；我们希望二者都保持在较高的水平
 因此，取 P = R 作为BEP（平衡点），作为综合考虑二者的依据
-此外，F度量即为二者的（加权）调和平均
 
+$F_\beta-Score:$
+$\beta$用于（加权）调和P和R对于整体的贡献程度
+$$\frac{1}{F_\beta}=\frac{1}{1+\beta^2}(\frac{1}{P}+\frac{\beta^2}{R})$$
 
 ![这是图片](/Course-Insight/src/p-r.jpg "contrast")
 
@@ -658,6 +660,12 @@ $$Gain(D,a)=Ent(D)-\sum^V_{v=1}\frac{|D^v|}{|D|}Ent(D^v)
 
 
 ### 激活函数
+1. $Sigmoid(x)=\frac{1}{1+e^{-x}}$
+1. $tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$
+3. $ReLU(x)=max(0,x)$
+3. $softmax(\mathbf{z})_i=\frac{exp(\mathbf{z}_i)}{\sum_j(\mathbf{z}_j)}$*(习惯上把z叫做logits)*
+3. $LeakyReLU(x)=max(\alpha x,x)$
+3. $Exponential LU(x)=$
 
 ### 代价函数
 
@@ -690,13 +698,6 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 #### 参数共享
 
 #### 激活函数
-1. $Sigmoid(x)=\frac{1}{1+e^{-x}}$
-1. $tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$
-3. $ReLU(x)=max(0,x)$
-
-##### 其他激活函数
-1. $softmax(\mathbf{z})_i=\frac{exp(\mathbf{z}_i)}{\sum_j(\mathbf{z}_j)}$ *(习惯上把z叫做logits)*
-
 
 
 #### 多通道卷积
@@ -864,9 +865,10 @@ Metropolis-Hastings方法的一个特例
 #### 核的广义理解
 #### 核函数的判定
 ### 三种NN对比表
-| 分类|前馈神经网络 |卷积神经网络 |循环神经网络 |
+| 分类|前馈神经网络 |卷积神经网络 |循环神经网络（一般</>lstm） |
 |--|--|--|--|
-| 特点 |  |  | |
-| 优点 | |  | |
-| 缺点| | |
+| 结构| $f(x)=f^{(3)}(f^{(2)}f^{(1)}(x))$|CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC |遗忘门-输入门-输出门 |
+| 特点 |  | 1. 局部感知<br> 2. 参数共享<br> 3. 池化<br> | |
+| 优点 |较容易处理网格数据 |  | |
+| 缺点|1. 较难处理序列数据 <br> 2. 缺乏长期记忆能力<br>3. 参数太多<br>4. 不满足局部不变性| | 1. 梯度消失<br>2. 难以刻画**长期依赖关系** <br></><br>3. |
 |考点 | | |
