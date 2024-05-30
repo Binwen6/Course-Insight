@@ -665,7 +665,11 @@ $$Gain(D,a)=Ent(D)-\sum^V_{v=1}\frac{|D^v|}{|D|}Ent(D^v)
 3. $ReLU(x)=max(0,x)$
 3. $softmax(\mathbf{z})_i=\frac{exp(\mathbf{z}_i)}{\sum_j(\mathbf{z}_j)}$*(习惯上把z叫做logits)*
 3. $LeakyReLU(x)=max(\alpha x,x)$
-3. $Exponential LU(x)=$
+3. $Exponential LU(x)=\left\{
+\begin{array}{rcl}
+x & \text{if} & x > 0, \\
+a(e^x - 1) & \text{if} & otherwise \end{array}\right.
+$
 
 ### 代价函数
 
