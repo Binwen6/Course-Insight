@@ -441,6 +441,8 @@ $$
 #### 核方法 的 引入
 
 > 从原始空间到特征空间的升维映射
+> 核函数具有对称性
+> 核函数对应于一个未知特征空间的内积
 
 | Kernel     | 形式                                                                    |
 | ---------- | ----------------------------------------------------------------------- |
@@ -449,8 +451,19 @@ $$
 | 拉普拉斯核 | $k(\mathbf{x},\mathbf{y}) = exp[-\frac{\Vert x-y\Vert}{\sigma}]$      |
 | 反曲核     | $k(\mathbf{x},\mathbf{y}) = tanh(a\textbf{x}^T\textbf{y} + b) $       |
 
-- 基于已有核构造核函数的系列方法
+**从零构建一个核函数**
+$$k(\mathbf{x},\mathbf{y}) = \phi(\mathbf{x})^T\phi(\mathbf{y}) \\ \mathbf{x}=(x_1,x_2,...,x_n)^T \\ \mathbf{y}=(y_1,y_2,...,y_n)^T$$
+**基于已有核构造核函数的系列方法**
+- $k(\mathbf{x},\mathbf{y})=ck_1(\mathbf{x},\mathbf{y})$
+- $k(\mathbf{x},\mathbf{y})=f(\mathbf{x})k_1(\mathbf{x},\mathbf{y})f(\mathbf{y})$
+- $k(\mathbf{x},\mathbf{y})=q(k_1(\mathbf{x},\mathbf{y}))$
+- $k(\mathbf{x},\mathbf{y})=k_1(\mathbf{x},\mathbf{y})+k_2(\mathbf{x},\mathbf{y})$
+- $k(\mathbf{x},\mathbf{y})=k_1(\mathbf{x},\mathbf{y})k_2(\mathbf{x},\mathbf{y})$
 
+- $k(\mathbf{x},\mathbf{y})=k_3(\phi(\mathbf{x}),\phi(\mathbf{y}))$
+- $k(\mathbf{x},\mathbf{y})=\mathbf{x^T A y}$
+- $k(\mathbf{x},\mathbf{y})=k_a(\mathbf{x_a},\mathbf{y_a})+k_b(\mathbf{x_b},\mathbf{y_b})$
+- $k(\mathbf{x},\mathbf{y})=k_a(\mathbf{x_a},\mathbf{y_a})k_b(\mathbf{x_b},\mathbf{y_b})$
 
 #### 核方法的推广
 
@@ -868,6 +881,7 @@ Metropolis-Hastings方法的一个特例
 ### Kernel小专题
 #### 核的广义理解
 #### 核函数的判定
+> 从构建的角度判定
 ### 三种NN对比表
 | 分类|前馈神经网络 |卷积神经网络 |循环神经网络（一般</>lstm） |
 |--|--|--|--|
