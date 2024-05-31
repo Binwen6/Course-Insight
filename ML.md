@@ -87,7 +87,7 @@ E：经验是人们知识积累、经验就是数据集，数据点的集合
 $$D_M = \sqrt{(\mathbf{x}-\mathbf{y})^T\mathbf{\Sigma}^{-1}(\mathbf{x}-\mathbf{y})}\\\Sigma:covariance\ matrix$$
 
 Tanimoto测度
-$$T(\mathbf{x},\mathbf{y})=\frac{\mathbf{x^Ty}}{\mathbf{x^Tx+y^Ty-x^Ty}}$$
+$$T(\mathbf{x},\mathbf{y})=\frac{\mathbf{x^T y}}{\mathbf{x^T x+y^T y-x^T y}}$$
 
 #### 概率与信息
 
@@ -151,7 +151,7 @@ $\theta_{MAP}=arg max_\theta p(x|\theta)p(\theta)$
 
 ###### 交叉熵：定义于两个概率分布之上，反映两个概率分布的差异程度。
 
-交叉熵是用来衡量在给定的真实分布下，使用非真实分布所指定的策略消除系统的不确定性所需要付出的努力的大小。
+交叉熵是用来衡量在给定的真实分布$p(x)$下，使用非真实分布$q(x)$所指定的策略消除系统的不确定性所需要付出的努力的大小。即$q(x)$是对$p(x)$的预测(估计)值，有时也被称为$\hat{p}(x)$
 
 $$H(p,q)=-\sum_xp(x)lnq(x)$$
 
@@ -173,7 +173,8 @@ $$D_{KL}(p||q)=\sum_xp(x)ln\frac{p(x)}{q(x)}$$
 
 ###### JS散度
 
-$$D_{JS}(p||q)=\frac{1}{2}\{\sum_x[p(x)+q(x)]ln\frac{p(x)+q(x)}{2}\}$$
+$$D_{JS}(p||q)=\frac{1}{2}D_{KL}(p||m)+\frac{1}{2}D_{KL}(q||m)
+\\ m(x)=\frac{1}{2}[p(x)+q(x)]$$
 
 - 对称
 
