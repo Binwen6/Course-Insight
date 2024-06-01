@@ -340,17 +340,22 @@ HMM等图/网络模型及其变体
 
 - 模型的求解
 
-1. 解析法
-
+**解析法**
 > 利用矩阵进行最大似然估计
+1. 似然函数为 $p(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)=\prod^N_{n=1}\mathcal{N}(t_n|\mathbf{w}^T\phi(\mathbf{x}_n),\beta^{-1})$
+1. 参数的最大似然估计为 $(\mathbf{w},\beta)_{ML}=argmax_{\mathbf{w},\beta}lnp(\mathbf{t}|\mathbf{X},\mathbf{w},\beta)$
+1. 对数似然函数为 $\frac{N}{2}ln\beta-\frac{N}{2}ln(2\pi)-\beta E_D (\mathbf{w})\ E_D(\mathbf{w})=\frac{1}{2}\sum^N_{n=1}\{t_n-\mathbf{w}^T\phi(\mathbf{x}_n)\}^2$
+1. 对w求导得 $=\frac{1}{2}\sum^N_{n=1}\{t_n-\mathbf{w}^T\phi(\mathbf{x}_n)\}\phi(\mathbf{x}_n)$
+1. 令导数为0得到 $\mathbf{w}_{ML}=(\phi^T\phi)^{-1}\phi^T\mathbf{t}$
 
 ps. 平方和误差函数的构造的一致性
 
-1. 迭代法
+**迭代法**
 
 > 随机梯度下降法（SGD法）
 
 递推公式
+$$\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nabla E_n(\mathbf{w})\\误差函数E由样本点E_n的误差组成$$
 
 #### 拓展：多输出
 
@@ -375,10 +380,20 @@ ps. 平方和误差函数的构造的一致性
 
 [多分类SVM](#拓展多分类svm)
 
-1. 最小平方和误差
-2. Fisher线性判别式
-3. Perceptron Algorithm
-
+##### 最小平方和误差
+令导数为0得到 $\widetilde{\mathbf{W}}=(\widetilde{\mathbf{X}}^T\widetilde{\mathbf{X}})^{-1}\widetilde{\mathbf{X}}^T\mathbf{T}$
+[求导优化结果类似](#线性模型用于回归问题)
+##### Fisher线性判别式
+引入三个概念：
+1. 向量均值
+1. 均值投影
+1. 类内方差
+###### Fisher准则：$J(\mathbf{w})$越大越好
+$$J(\mathbf{w})=\frac{(m_2-m_1)^2}{s^2_1+s^2_2}=\frac{\mathbf{w}^T\mathbf{S}_B\mathbf{w}}{\mathbf{w}^T\mathbf{S}_W\mathbf{w}}=\frac{类间距}{类内距}\\ \mathbf{S}_B=(\mathbf{m}_2-\mathbf{m}_1)(\mathbf{m}_2-\mathbf{m}_1)^T\\ \mathbf{S}_W=\sum_{n\in C_1}(x_n-\mathbf{m}_1)(x_n-\mathbf{m}_1)^T+\sum_{n\in C_2}(x_n-\mathbf{m}_2)(x_n-\mathbf{m}_2)^T$$
+##### Perceptron Algorithm
+###### 感知机准则：$E_p(\mathbf{w})$越小越好
+$\mathcal{M}$为错分样本集合
+$$E_p(\mathbf{w})=-\sum_{n\in \mathcal{M}}\mathbf{w}^T\phi(x_n)t_n$$
 #### 概率模型 的 引入
 
 > 概率模型按照x与y的分布划分为：判别式模型（给定x条件下y的概率）和生成式模型（估计x和y的联合分布）
