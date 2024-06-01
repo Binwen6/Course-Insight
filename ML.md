@@ -355,7 +355,7 @@ ps. 平方和误差函数的构造的一致性
 > 随机梯度下降法（SGD法）
 
 递推公式
-$$\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nabla E_n(\mathbf{w})\\误差函数E由样本点E_n的误差组成$$
+$$\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nabla E(\mathbf{w})\\E为误差函数$$
 
 #### 拓展：多输出
 
@@ -388,10 +388,10 @@ $$\mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\eta\nabla E_n(\mathbf{w})\\误差�
 1. 向量均值
 1. 均值投影
 1. 类内方差
-###### Fisher准则：$J(\mathbf{w})$越大越好
+###### Fisher准则：$J(\mathbf{w})$**越大越好**
 $$J(\mathbf{w})=\frac{(m_2-m_1)^2}{s^2_1+s^2_2}=\frac{\mathbf{w}^T\mathbf{S}_B\mathbf{w}}{\mathbf{w}^T\mathbf{S}_W\mathbf{w}}=\frac{类间距}{类内距}\\ \mathbf{S}_B=(\mathbf{m}_2-\mathbf{m}_1)(\mathbf{m}_2-\mathbf{m}_1)^T\\ \mathbf{S}_W=\sum_{n\in C_1}(x_n-\mathbf{m}_1)(x_n-\mathbf{m}_1)^T+\sum_{n\in C_2}(x_n-\mathbf{m}_2)(x_n-\mathbf{m}_2)^T$$
 ##### Perceptron Algorithm
-###### 感知机准则：$E_p(\mathbf{w})$越小越好
+###### 感知机准则：$E_p(\mathbf{w})$**越小越好**
 $\mathcal{M}$为错分样本集合
 $$E_p(\mathbf{w})=-\sum_{n\in \mathcal{M}}\mathbf{w}^T\phi(x_n)t_n$$
 #### 概率模型 的 引入
@@ -400,9 +400,8 @@ $$E_p(\mathbf{w})=-\sum_{n\in \mathcal{M}}\mathbf{w}^T\phi(x_n)t_n$$
 
 ### 逻辑回归模型
 
-1. 解析法
-
-> 最大似然估计法
+1. 解析法（最大似然估计法）
+负对数似然：$E(\mathbf{w})=-lnp(\mathbf{t}|\mathbf{w})=-\sum^N_{n=1}\{t_nlny_n+(1-t_n)ln(1-y_n)\}$**越小越好**
 
 1. 迭代法
 
@@ -413,12 +412,20 @@ $$E_p(\mathbf{w})=-\sum_{n\in \mathcal{M}}\mathbf{w}^T\phi(x_n)t_n$$
 补充知识：海森矩阵
 
 $$
-\mathbf{H} = \frac{\partial^2E(\mathbf{w})}{\partial \mathbf{w}}
-$$
+\mathbf{H} = \frac{\partial^2E(\mathbf{w})}{\partial \mathbf{w}}\\ \mathbf{w}^{(\tau+1)}=\mathbf{w}^{(\tau)}-\mathbf{H}^{-1} \nabla E(\mathbf{w})\\ \nabla E(\mathbf{w})=\sum^N_{n=1}(y_n-t_n)\phi_n=\Phi^T(y-t)$$
 
 #### 拓展：多类回归
+> 使用softmax函数
 
 #### 生成模型 的 引入
+类似于Metropolis-Hasting算法
+- 二分类问题
+$a=ln\frac{p(\mathbf{x}|C_1)p(C_1)}{p(\mathbf{x}|C_2)(C_2)}$**连续输入特征**$=\mathbf{w}^T\mathbf{x}+w_0$
+
+- 多分类问题
+$a_k=lnp(\mathbf{x}|C_k)p(C_k)$**连续输入特征**$=\mathbf{w}^T_k\mathbf{x}+w_k0$
+
+似然函数：$p(\mathbf{t}|\pi,\pmb{\mu}_1,\pmb{\mu}_2,\pmb{\Sigma})=\prod^N_{n=1}[\pi\mathcal{N}(\mathbf{x}_n|\pmb{\mu}_1,\pmb{\Sigma})]^{t_n}[(1-\pi)\mathcal{N}(\mathbf{x}_n|\pmb{\mu}_2,\pmb{\Sigma})]^{1-t_n}$
 
 ---
 
