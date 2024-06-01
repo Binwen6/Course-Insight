@@ -213,7 +213,8 @@ $F_\beta-Score:$
 $\beta$用于（加权）调和P和R对于整体的贡献程度
 $$\frac{1}{F_\beta}=\frac{1}{1+\beta^2}(\frac{1}{P}+\frac{\beta^2}{R})$$
 
-![这是图片](/Course-Insight/src/p-r.jpg "contrast")
+
+<img src="/Course-Insight/src/p-r.jpg"/>
 
 ###### ROC（受试者工作特征曲线）
 
@@ -223,7 +224,7 @@ FPR is for False Positive Rate（假正例率）：所有反例中被你错误�
 TPR & FPR：正相关；我们希望TPR维持在较高水平而FPR维持在较低水平
 
 
-![这是图片](/Course-Insight/src/roc.jpg)
+<img src="/Course-Insight/src/roc.jpg"/>
 
 > 共同点：
 
@@ -263,7 +264,8 @@ TPR & FPR：正相关；我们希望TPR维持在较高水平而FPR维持在较�
 **Sample**
 判别式模型举例：要确定一个羊是**山羊**🐐还是**绵羊**🐑，用判别模型的方法是从历史数据中学习到模型，然后通过提取这只羊的特征来预测出这只羊是山羊的概率，是绵羊的概率。生成式模型举例：利用生成模型是根据山羊的特征首先学习出一个山羊的模型，然后根据绵羊的特征学习出一个绵羊的模型，然后从这只羊中提取特征，放到山羊模型中看概率是多少，在放到绵羊模型中看概率是多少，哪个大就是哪个。细细品味上面的例子，**判别式模型是根据一只羊的特征可以直接给出这只羊的概率（比如logistic regression，这概率大于0.5时则为正例，否则为反例），而生成式模型是要都试一试，最大的概率的那个就是最后结果~**
 
-![这是图片](/Course-Insight/src/discriminative_vs_generative.jpg)
+<img src="/Course-Insight/src/discriminative_vs_generative.jpg"/>
+
 
 **要求掌握一些具体例子**
 Discriminative：
@@ -544,7 +546,9 @@ $$k(\mathbf{x},\mathbf{y}) = \phi(\mathbf{x})^T\phi(\mathbf{y}) \\ \mathbf{x}=(x
 **视频中人的注意力推理**
 **——事件和物体联合识别的4D时空交互**
 
-![视频中的注意力机制](/Course-Insight\src\attention.jpg)
+
+<img src="/Course-Insight\src\attention.jpg"/>
+
 该公式要求看图能写出来
 
 ### 背景
@@ -608,7 +612,9 @@ Classification：
 - 重赋权法：
 通过更改上一轮中分错样本的权重（重赋权法），使得其**损失函数的函数值增大**，**基分类器**就会倾向于将权重大的这些样本（即错误样本）学对
 - 重采样法：
-![重采样](/Course-Insight/src/sampling.jpg)
+
+<img src="/Course-Insight\src\sampling.jpg"/>
+
 
 #### 典型算法：Adaboost
 
@@ -743,7 +749,7 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 1. 复制边界值
 1. 补“0”
 #### 卷积计算题
-
+$$Output\ Size=[\frac{Input\ Size-Kernel\ Size+2\times Padding}{Stride}]+1$$
 
 #### 局部感知域
 1. 计算参数量减少
@@ -761,6 +767,8 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 #### 池化
 1. 最大值池化
 1. 平均池化
+<img src='/Course-Insight/src/pooling.png'/>
+
 ##### 作用
 1. 特征不变性：只关注特征是否存在
 1. 特征降维性：减少参数数量（保留抽象信息），避免过拟合
@@ -789,7 +797,9 @@ CONV->ReLU->POOL->CONV->ReLU->POOL->……->FC
 ### 结构
 
 ### LSTM
-![lstm](/Course-Insight/src/lstm.jpg)
+
+<img src="/Course-Insight\src\lstm.jpg"/>
+
 
 #### 遗忘门
 $$f_t=\sigma(W_f\cdot[h_{t-1},x_t]+b_f)$$
@@ -962,7 +972,9 @@ $$h_t=O_t\cdot tanh(C_t)$$
 > 减少**初始样本**的偏差对最终结果的影响，确保生成的样本集更好地反映目标分布的特性。
 
 ##### 改进版（无需假设提议分布$q(z)$是对称的）算法口述
-![M](/Course-Insight/src/M.jpg)
+
+<img src="/Course-Insight\src\M.jpg"/>
+
 
 #### Gibbs采样
 Metropolis-Hastings方法的一个**三变量**特例
