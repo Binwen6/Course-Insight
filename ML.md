@@ -564,6 +564,7 @@ $$k(\mathbf{x},\mathbf{y}) = \phi(\mathbf{x})^T\phi(\mathbf{y}) \\ \mathbf{x}=(x
 > - 配分函数
 
 #### 引入状态空间——走向隐马尔可夫模型
+> *有亿点点类似于FSM有限状态机*
 
 ##### 解决三个基本问题
 HMM相关算法主要分为三类。
