@@ -446,9 +446,13 @@ $a_k=lnp(\mathbf{x}|C_k)p(C_k)$**连续输入特征**$=\mathbf{w}^T_k\mathbf{x}+
 
 - 二分类器的求解（拉格朗日方程法）
   1. 优化函数：最大化间隔
+  $$arg\ max_{\mathbf{w},b}\{\frac{1}{||w||}min_n[t_n(\mathbf{w}^T\phi(\mathbf{x}_n)+b)]\}$$
   > 在n个数据点中，找到距离最小的那个点，并尽可能使该点距离最大
+  > 通过提出来一个$\alpha$进行归一化
   2. 约束条件：确保全部分类正确
-
+  1. 拉格朗日方程：$L(\mathbf{w},b,\mathbf{a})=\frac{1}{2}\mathbf{w}^T\mathbf{w}-\sum^N_{n=1}a_n\{t_n(\mathbf{w}^T\phi(\mathbf{x}_n)+b)-1\}$
+- 分类器形式
+$$y(x)=\sum^N_{n=1}a_nt_nk(x,x_n)+b$$
 #### 实际情况：样本交错的处理
 
 两种思路：
