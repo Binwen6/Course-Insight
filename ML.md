@@ -458,6 +458,7 @@ $$y(x)=\sum^N_{n=1}a_nt_nk(x,x_n)+b$$
 两种思路：
 
 - 软间隔：松弛变量 + 惩罚因子（penalty）
+$$+C\sum^N_{i=1}\epsilon_i$$
 目的：减少过拟合（类似[正则化](#正则化方法)）
 - 核函数 + 非线性变换（*详见后文*）
 
@@ -471,6 +472,12 @@ $$y(x)=\sum^N_{n=1}a_nt_nk(x,x_n)+b$$
 
 #### **SVM用于回归**
 引入 $\epsilon-insensitive$
+$$E_\epsilon(y(x)-t)=\left\{
+\begin{array}{rcl}
+0 & \text{if} & |y(x)-t| < \epsilon, \\
+|y(x)-t|-\epsilon & \text{if} & otherwise \end{array}\right.
+$$
+
 > *钝感的带阈值整流器*
 
 #### 核方法 的 引入
